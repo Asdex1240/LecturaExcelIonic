@@ -1,0 +1,7 @@
+{
+  "name": "lecturaexcel",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
