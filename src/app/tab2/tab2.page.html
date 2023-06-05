@@ -7,4 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let mes of meses" size="6">
+        <ion-card class="ion-text-center" [routerLink]="[mes]">
+          <ion-card-content>
+            {{mes}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

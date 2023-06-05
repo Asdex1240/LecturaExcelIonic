@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: Tab2Page,
+  },
+  {
+    path: ':datos',
+    loadChildren: () => import('./datos/datos.module').then( m => m.DatosPageModule)
   }
 ];
 
