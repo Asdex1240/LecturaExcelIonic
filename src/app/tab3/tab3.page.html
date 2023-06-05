@@ -7,11 +7,27 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="center">
+    <br>
+    <ion-card>
+      <ion-card-content>
+          <ion-buttons>
+            <ion-button>
+               <label for="file-upload">
+                 <ion-icon slot="icon-only" name="documents"></ion-icon>
+               </label>
+                <input
+                 (change)="file($event)" 
+                 id="file-upload" 
+                 style="display: none" 
+                 type="file" 
+                 accept=".xlsx, .xls">
+              </ion-button>
+            </ion-buttons>
+            <br>
+            <p class="text-center">{{nameFile}}</p>
+          </ion-card-content>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    </ion-card>
+  </div>
 </ion-content>

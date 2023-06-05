@@ -1,0 +1,23 @@
+ion-icon[name="documents"] {
+    font-size: 3rem; /* Tamaño del icono */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ion-button {
+    height: 50px;
+    width: 50px;
+  }
+ion-card {
+  height: 150px;
+  width: 150px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}

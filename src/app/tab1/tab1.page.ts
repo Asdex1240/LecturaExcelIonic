@@ -8,5 +8,20 @@ import { Component } from '@angular/core';
 export class Tab1Page {
 
   constructor() {}
+  meses: string[] = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre'
+  ];
+  
 
 }
