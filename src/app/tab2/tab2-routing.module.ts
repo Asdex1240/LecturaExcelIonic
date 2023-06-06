@@ -8,7 +8,7 @@ const routes: Routes = [
     component: Tab2Page,
   },
   {
-    path: ':datos',
+    path: ':id',
     loadChildren: () => import('./datos/datos.module').then( m => m.DatosPageModule)
   }
 ];

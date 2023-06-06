@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ExcelService } from '../services/excel.service';
+import { DataService } from '../services/data.service';
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -7,24 +9,21 @@ import { ExcelService } from '../services/excel.service';
 })
 export class Tab3Page {
 
-  constructor(private excel: ExcelService) {}
+  constructor(private excel: ExcelService, private data: DataService ) {}
+
   fileToUpload!: File;
   nameFile!: string;
 
   file(event:any){
-    this.fileToUpload = this.excel.onFileChange(event)
-    console.log(this.fileToUpload)
-    const range = { s:{r: 0, c:0}, e: {r:1, c:0}};
-    this.excel.modificarArchivoExcel(this.fileToUpload, range,3)
-    //this.getData()
+    this.excel.archivoExel = this.excel.onFileChange(event)
+    
+    this.getData()
   }
-
+  
   async getData(){
-    //
-    //await this.excel.readFile(this.fileToUpload, rage).then((data) =>{
-      //console.log(data)
-    //})
-
+    const numHoja = 0
+    const data = await this.excel.readFile(numHoja);
+    console.log(data)
   }
 
 }

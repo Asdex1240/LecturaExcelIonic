@@ -6,6 +6,7 @@ import * as XLSX from 'xlsx'
 })
 export class ExcelService {
   hayArchivo = false;
+  archivoExel!: File
 
   constructor() { }
   onFileChange(event: any) {
@@ -13,33 +14,23 @@ export class ExcelService {
     return event.target.files[0];
   }
 
-  /*
-    Rango debe seguir esta estructura 
-    { s: { r: numero, c: numero }, e: { r: numero, c: numero } }
-  */
-    readFile(file: any, rango: any): Promise<any> {
-      // Creamos una nueva promesa
-      return new Promise((resolve, reject) => {
-        const reader: FileReader = new FileReader();
-        reader.onload = (e: any) => {
-          const bstr: string = e.target.result;
-          const workbook: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
-          const worksheet: XLSX.WorkSheet = workbook.Sheets[workbook.SheetNames[0]];
-          const range = rango;
-          const data = XLSX.utils.sheet_to_json(worksheet, { range, header: 1 });
-          console.log(data)
-          // Resolvemos la promesa con los 
-          resolve(data);
-        };
-        // Manejamos el caso de error
-        reader.onerror = (e) => {
-          reject(e);
-        };
-        reader.readAsBinaryString(file);
-      });
-    }
+  readFile(numHoja: number):Promise<any> {
+    return new Promise( (resolve, reject) =>{
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(this.archivoExel);
+      fileReader.onload = (e) =>{
+        const workbook = XLSX.read(fileReader.result,{type:'binary'});
+        const sheetNames = workbook.SheetNames;
+        const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheetNames[numHoja]])
+        resolve(data)
+      };
+      fileReader.onerror = (e) =>{
+        reject(e)
+      }
+    });
+  }
 
-    async modificarArchivoExcel(archivo: File, celda: any, nuevoValor: any): Promise<any> {
+    /*async modificarArchivoExcel(archivo: File, celda: any, nuevoValor: any): Promise<any> {
       try {
         const data = await this.readFile(archivo, celda);
         // Modificamos el valor de la celda especificada con el nuevo valor
@@ -65,7 +56,7 @@ export class ExcelService {
       } catch (error) {
         console.error('Error al leer el archivo Excel:', error);
       }
-    }
+    }*/
     
       
       

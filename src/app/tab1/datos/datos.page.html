@@ -5,5 +5,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  <ion-card *ngFor="let col of cols; let i = index">
+    <ion-card-content>
+      <ion-item>
+        <ion-label>
+          <h2>{{col}}</h2>
+          <h4>valor: {{dataCol[i]}}</h4>
+        </ion-label>
+          <ion-buttons slot="end">
+            <ion-button >
+              <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block">Guardar</ion-button>
 </ion-content>

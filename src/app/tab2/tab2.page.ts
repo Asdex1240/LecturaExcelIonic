@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -7,20 +7,7 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
-  meses: string[] = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre'
-  ];
+  constructor(private data: DataService) {}
+  meses = this.data.meses
 
 }
